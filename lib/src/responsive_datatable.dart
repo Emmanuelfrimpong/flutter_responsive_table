@@ -322,9 +322,9 @@ class _ResponsiveDatatableState extends State<ResponsiveDatatable> {
           InkWell(
             onTap: () {
               widget.onTabRow?.call(data);
-              setState(() {
-                widget.expanded![index] = !widget.expanded![index];
-              });
+              // setState(() {
+              //   widget.expanded![index] = !widget.expanded![index];
+              // });
             },
             child: Container(
               padding: EdgeInsets.all(widget.showSelect ? 0 : 11),
@@ -378,10 +378,10 @@ class _ResponsiveDatatableState extends State<ResponsiveDatatable> {
               ),
             ),
           ),
-          if (widget.isExpandRows &&
-              widget.expanded![index] &&
-              widget.dropContainer != null)
-            widget.dropContainer!(data)
+          // if (widget.isExpandRows &&
+          //     widget.expanded![index] &&
+          //     widget.dropContainer != null)
+          //   widget.dropContainer!(data)
         ],
       ));
     }
