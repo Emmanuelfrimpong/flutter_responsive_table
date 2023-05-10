@@ -378,10 +378,6 @@ class _ResponsiveDatatableState extends State<ResponsiveDatatable> {
               ),
             ),
           ),
-          // if (widget.isExpandRows &&
-          //     widget.expanded![index] &&
-          //     widget.dropContainer != null)
-          //   widget.dropContainer!(data)
         ],
       ));
     }
@@ -437,6 +433,20 @@ class _ResponsiveDatatableState extends State<ResponsiveDatatable> {
                     ],
                   ),
                 ),
+              if (widget.source == null || widget.source!.isEmpty)
+                //wrap with expanded to fill the screen
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(50),
+                    alignment: Alignment.center,
+                    child: const Text('No data found'),
+                  ),
+                ),
+              // Container(
+              //   padding: const EdgeInsets.all(50),
+              //   alignment: Alignment.center,
+              //   child: const Text('No data found'),
+              // ),
 
               /// footer
               if (widget.footers != null)
@@ -478,6 +488,14 @@ class _ResponsiveDatatableState extends State<ResponsiveDatatable> {
                 // desktopList
                 if (widget.source != null && widget.source!.isNotEmpty)
                   Expanded(child: ListView(children: desktopList())),
+              if (widget.source == null || widget.source!.isEmpty)
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(50),
+                    alignment: Alignment.center,
+                    child: const Text('No data found'),
+                  ),
+                ),
 
               //footer
               if (widget.footers != null)
@@ -517,12 +535,12 @@ class TextEditableWidget extends StatelessWidget {
   /// `onChanged`
   ///
   /// trigger the call back update when user make any text change
-  final Function(Map<String, dynamic> vaue, DatatableHeader header)? onChanged;
+  final Function(Map<String, dynamic> value, DatatableHeader header)? onChanged;
 
   /// `onSubmitted`
   ///
   /// trigger the call back when user press done or enter
-  final Function(Map<String, dynamic> vaue, DatatableHeader header)?
+  final Function(Map<String, dynamic> value, DatatableHeader header)?
       onSubmitted;
 
   const TextEditableWidget({
